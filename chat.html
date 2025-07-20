@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>AI Contract PDF Analyzer</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#14191f] dark group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow">
+        
+        <!-- Left Sidebar Navigation -->
+        <div class="flex flex-col w-[280px] bg-[#1a1f26] border-r border-[#2d3748]">
+          <div class="flex flex-col gap-4 p-6">
+            <div class="flex items-center gap-3">
+              <div class="text-[#4a9eff] bg-[#1e3a8a] p-2 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Z"></path>
+                </svg>
+              </div>
+              <div>
+                <h1 class="text-white text-lg font-bold leading-normal">AI Contract Analyzer</h1>
+                <p class="text-[#9badc0] text-sm">Powered by AI</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2 px-4 flex-1">
+            <!-- Navigation Items -->
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#293542] text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Z"></path>
+              </svg>
+              <p class="text-sm font-medium">Current Document</p>
+            </div>
+
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#9badc0] hover:bg-[#293542] hover:text-white cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V88H40ZM40,200V104H216v96Z"></path>
+              </svg>
+              <p class="text-sm font-medium">All Documents</p>
+            </div>
+
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#9badc0] hover:bg-[#293542] hover:text-white cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M208,32H80A16,16,0,0,0,64,48V64H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V192h16a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM176,208H48V80H64V176a16,16,0,0,0,16,16H176Zm32-32H80V48H208Z"></path>
+              </svg>
+              <p class="text-sm font-medium">Recent Analysis</p>
+            </div>
+
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#9badc0] hover:bg-[#293542] hover:text-white cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Z"></path>
+              </svg>
+              <p class="text-sm font-medium">Templates</p>
+            </div>
+
+            <!-- Document Info Panel -->
+            <div class="mt-6 p-4 bg-[#1e2936] rounded-lg border border-[#3b4c5e]">
+              <h3 class="text-white text-sm font-semibold mb-3">Document Info</h3>
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between">
+                  <span class="text-[#9badc0]">Pages:</span>
+                  <span class="text-white">15</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-[#9badc0]">Size:</span>
+                  <span class="text-white">2.4 MB</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-[#9badc0]">Type:</span>
+                  <span class="text-white">Contract</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-[#9badc0]">Status:</span>
+                  <span class="text-green-400">✓ Analyzed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Analysis Summary -->
+            <div class="mt-4 p-4 bg-[#1e2936] rounded-lg border border-[#3b4c5e]">
+              <h3 class="text-white text-sm font-semibold mb-3">Quick Insights</h3>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <span class="text-xs text-[#9badc0]">3 Risk Areas</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span class="text-xs text-[#9badc0]">12 Key Terms</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span class="text-xs text-[#9badc0]">5 Dates Found</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="p-4 border-t border-[#3b4c5e]">
+            <button class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#4a9eff] text-white rounded-lg hover:bg-[#3b82f6] font-medium text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM32,64H224V192H32ZM64,96a8,8,0,0,1,8-8H184a8,8,0,0,1,0,16H72A8,8,0,0,1,64,96Zm0,32a8,8,0,0,1,8-8H184a8,8,0,0,1,0,16H72A8,8,0,0,1,64,128Zm0,32a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H72A8,8,0,0,1,64,160Z"></path>
+              </svg>
+              Upload New PDF
+            </button>
+            <div class="flex items-center gap-3 px-4 py-2 mt-2 text-[#9badc0] hover:text-white cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"></path>
+              </svg>
+              <p class="text-sm">Settings</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main PDF Viewer Area -->
+        <div class="flex-1 flex flex-col bg-[#0f1419]">
+          <!-- PDF Toolbar -->
+          <div class="flex items-center justify-between p-4 bg-[#1a1f26] border-b border-[#2d3748]">
+            <div class="flex items-center gap-4">
+              <h2 class="text-white text-lg font-semibold">Service_Agreement_2024.pdf</h2>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Analyzed</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Contract</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <!-- Zoom controls -->
+              <div class="flex items-center gap-2 bg-[#293542] rounded-lg p-2">
+                <button class="p-1 text-[#9badc0] hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"></path>
+                  </svg>
+                </button>
+                <span class="text-white text-sm px-2">85%</span>
+                <button class="p-1 text-[#9badc0] hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                  </svg>
+                </button>
+              </div>
+              
+              <!-- Page navigation -->
+              <div class="flex items-center gap-2 bg-[#293542] rounded-lg p-2">
+                <button class="p-1 text-[#9badc0] hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+                  </svg>
+                </button>
+                <span class="text-white text-sm px-2">3 of 15</span>
+                <button class="p-1 text-[#9badc0] hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Download/Print actions -->
+              <div class="flex items-center gap-2">
+                <button class="p-2 text-[#9badc0] hover:text-white hover:bg-[#293542] rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,152v56a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V152a16,16,0,0,1,16-16H72a8,8,0,0,1,0,16H48v56H208V152H184a8,8,0,0,1,0-16h24A16,16,0,0,1,224,152ZM93.66,77.66,120,51.31V128a8,8,0,0,0,16,0V51.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,77.66Z"></path>
+                  </svg>
+                </button>
+                <button class="p-2 text-[#9badc0] hover:text-white hover:bg-[#293542] rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M216,40H168a8,8,0,0,0,0,16h40V192H168a8,8,0,0,0,0,16h48a8,8,0,0,0,8-8V48A8,8,0,0,0,216,40ZM104,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16h48a8,8,0,0,0,0-16H56V48h48a8,8,0,0,0,0-16Z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PDF Document Display -->
+          <div class="flex-1 p-6 overflow-auto">
+            <div class="max-w-4xl mx-auto">
+              <!-- Simulated PDF Content -->
+              <div class="bg-white rounded-lg shadow-lg min-h-[800px] p-8 text-black relative">
+                <!-- Highlight overlays for AI analysis -->
+                <div class="absolute top-[120px] left-8 w-32 h-4 bg-yellow-200 opacity-50 rounded"></div>
+                <div class="absolute top-[200px] left-8 w-48 h-4 bg-red-200 opacity-50 rounded"></div>
+                <div class="absolute top-[280px] left-8 w-24 h-4 bg-blue-200 opacity-50 rounded"></div>
+                
+                <div class="text-center mb-8">
+                  <h1 class="text-2xl font-bold mb-2">SERVICE AGREEMENT</h1>
+                  <p class="text-gray-600">Contract No: SA-2024-001</p>
+                </div>
+                
+                <div class="space-y-4 text-sm leading-relaxed">
+                  <p><strong>This Service Agreement</strong> ("Agreement") is entered into on <span class="bg-blue-200">January 15, 2024</span> between:</p>
+                  
+                  <div class="ml-4">
+                    <p><strong>Service Provider:</strong> <span class="bg-yellow-200">TechSolutions Inc.</span></p>
+                    <p>Address: 123 Business Street, City, State 12345</p>
+                  </div>
+                  
+                  <div class="ml-4">
+                    <p><strong>Client:</strong> Global Enterprises LLC</p>
+                    <p>Address: 456 Corporate Ave, City, State 67890</p>
+                  </div>
+                  
+                  <h2 class="text-lg font-semibold mt-6">1. SCOPE OF SERVICES</h2>
+                  <p>The Service Provider agrees to provide the following services:</p>
+                  <ul class="ml-4 list-disc">
+                    <li>Software development and maintenance</li>
+                    <li>Technical support and consultation</li>
+                    <li>System integration services</li>
+                  </ul>
+                  
+                  <h2 class="text-lg font-semibold mt-6">2. TERM AND TERMINATION</h2>
+                  <p>This Agreement shall commence on the Effective Date and shall continue for a period of <span class="bg-red-200">twelve (12) months</span>, unless terminated earlier in accordance with the terms herein.</p>
+                  
+                  <h2 class="text-lg font-semibold mt-6">3. PAYMENT TERMS</h2>
+                  <p>Client agrees to pay Service Provider the sum of $50,000 for the services described herein. Payment shall be made in monthly installments of $4,167.</p>
+                  
+                  <h2 class="text-lg font-semibold mt-6">4. CONFIDENTIALITY</h2>
+                  <p>Both parties acknowledge that they may have access to certain confidential information of the other party...</p>
+                  
+                  <div class="mt-12 pt-8 border-t border-gray-300">
+                    <div class="grid grid-cols-2 gap-8">
+                      <div>
+                        <p class="font-semibold">Service Provider</p>
+                        <div class="mt-8 border-b border-gray-400 w-48"></div>
+                        <p class="text-xs text-gray-600 mt-1">Signature</p>
+                      </div>
+                      <div>
+                        <p class="font-semibold">Client</p>
+                        <div class="mt-8 border-b border-gray-400 w-48"></div>
+                        <p class="text-xs text-gray-600 mt-1">Signature</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Chat Panel -->
+        <div class="flex flex-col w-[400px] bg-[#1a1f26] border-l border-[#2d3748]">
+          <!-- Chat Header -->
+          <div class="flex items-center justify-between p-4 border-b border-[#2d3748]">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="white" viewBox="0 0 256 256">
+                  <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold">AI Assistant</h3>
+                <p class="text-[#9badc0] text-xs">Contract Analysis Expert</p>
+              </div>
+            </div>
+            <button class="p-1 text-[#9badc0] hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Chat Messages -->
+          <div class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- AI Welcome Message -->
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="white" viewBox="0 0 256 256">
+                  <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+                </svg>
+              </div>
+              <div class="flex flex-col max-w-[280px]">
+                <div class="bg-[#293542] text-white p-3 rounded-lg rounded-tl-none">
+                  <p class="text-sm">Hello! I've analyzed your Service Agreement. I found several key areas that need attention:</p>
+                  <ul class="text-xs mt-2 space-y-1">
+                    <li>• 3 potential risk areas highlighted</li>
+                    <li>• 12 important terms identified</li>
+                    <li>• 5 critical dates found</li>
+                  </ul>
+                </div>
+                <span class="text-xs text-[#9badc0] mt-1">Just now</span>
+              </div>
+            </div>
+ 
+            <!-- Analysis Cards -->
+            <div class="space-y-3">
+              <div class="bg-[#1e2936] border border-yellow-500/30 rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                  <span class="text-yellow-400 text-xs font-semibold">RISK ALERT</span>
+                </div>
+                <p class="text-white text-sm">Termination clause may be too restrictive. Consider adding mutual termination rights.</p>
+                <button class="text-blue-400 text-xs mt-1 hover:underline">View in document →</button>
+              </div>
+ 
+              <div class="bg-[#1e2936] border border-blue-500/30 rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                  <span class="text-blue-400 text-xs font-semibold">KEY TERM</span>
+                </div>
+                <p class="text-white text-sm">Payment terms: $50,000 total, $4,167/month over 12 months</p>
+                <button class="text-blue-400 text-xs mt-1 hover:underline">View details →</button>
+              </div>
+ 
+              <div class="bg-[#1e2936] border border-green-500/30 rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <span class="text-green-400 text-xs font-semibold">GOOD PRACTICE</span>
+                </div>
+                <p class="text-white text-sm">Confidentiality clause is well-structured and comprehensive.</p>
+              </div>
+            </div>
+ 
+            <!-- Suggested Questions -->
+            <div class="mt-6">
+              <p class="text-[#9badc0] text-xs mb-3">Suggested questions:</p>
+              <div class="space-y-2">
+                <button class="w-full text-left p-2 bg-[#1e2936] hover:bg-[#293542] rounded-lg text-white text-sm transition-colors">
+                  What are the main risks in this contract?
+                </button>
+                <button class="w-full text-left p-2 bg-[#1e2936] hover:bg-[#293542] rounded-lg text-white text-sm transition-colors">
+                  Summarize payment terms and deadlines
+                </button>
+                <button class="w-full text-left p-2 bg-[#1e2936] hover:bg-[#293542] rounded-lg text-white text-sm transition-colors">
+                  Check for missing standard clauses
+                </button>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Chat Input -->
+          <div class="p-4 border-t border-[#2d3748]">
+            <div class="flex items-end gap-3">
+              <div class="flex-1">
+                <textarea 
+                  placeholder="Ask about this contract..." 
+                  class="w-full bg-[#293542] text-white placeholder-[#9badc0] border-0 rounded-lg p-3 text-sm resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                  rows="2"
+                ></textarea>
+              </div>
+              <button class="p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M231.87,114l-168-95.89C54.42,12.78,48,15.71,48,25.89V88a8,8,0,0,0,6.33,7.82l81.25,16.25a8,8,0,0,1,0,15.86L54.33,144.18A8,8,0,0,0,48,152v62.11c0,10.18,6.42,13.11,14.87,7.75l168-95.89C239.18,121.06,239.18,118.94,231.87,114Z"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="flex items-center gap-2 mt-3">
+              <button class="flex items-center gap-1 px-3 py-1 bg-[#293542] hover:bg-[#3b4c5e] text-[#9badc0] hover:text-white rounded-lg text-xs transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z"></path>
+                </svg>
+                Analyze Risks
+              </button>
+              <button class="flex items-center gap-1 px-3 py-1 bg-[#293542] hover:bg-[#3b4c5e] text-[#9badc0] hover:text-white rounded-lg text-xs transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Z"></path>
+                </svg>
+                Summary
+              </button>
+              <button class="flex items-center gap-1 px-3 py-1 bg-[#293542] hover:bg-[#3b4c5e] text-[#9badc0] hover:text-white rounded-lg text-xs transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,40,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Z"></path>
+                </svg>
+                Export Report
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+ </html>
